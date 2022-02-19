@@ -9,6 +9,11 @@ use App\Http\Requests\StoreCategoryPost;
 
 class CategoryController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware(['auth','rol.admin']);
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -42,7 +47,7 @@ class CategoryController extends Controller
 
         Category::create($request->validated());
 
-        return back()->with('status','Post creado con exito.');
+        return back()->with('status','Categoría creada con exito.');
     }
 
     /**
@@ -78,7 +83,7 @@ class CategoryController extends Controller
     {
         $category->update($request->validated());
 
-        return back()->with('status','Post editado con exito.');
+        return back()->with('status','Categoría editada con exito.');
     }
 
     /**

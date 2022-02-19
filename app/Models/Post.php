@@ -22,18 +22,11 @@ class Post extends Model
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
-    public function category()
-    {
+    public function category(){
         return $this->belongsTo(Category::class);
     }
 
-    /**
-     * Get the user associated with the Post
-     *
-     * @return \Illuminate\Database\Eloquent\Relations\HasOne
-     */
-    public function image()
-    {
+    public function image(){
         return $this->hasOne(PostImage::class);
     }
 }

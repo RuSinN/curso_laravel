@@ -11,6 +11,12 @@ use App\Http\Requests\StorePostPost;
 
 class PostController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware(['auth','rol.admin']);
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -71,8 +77,6 @@ class PostController extends Controller
      */
     public function edit(Post $post)
     {
-        dd($post->image);
-
         $categories = Category::pluck('id','title');
         return view('dashboard.post.edit',['post' => $post, 'categories' => $categories]);  
     }
